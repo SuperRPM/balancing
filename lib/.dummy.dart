@@ -111,7 +111,7 @@ class _DialogUIState extends State<DialogUI> {
                   child: Text('등록'),
                   onPressed: () {
                     if (widget.inputName.text.isEmpty) {
-                      showDialog(context: context, builder: (BuildContext builder))
+                      showDialog(context: context, builder: (builder))
                     }
                     setState(() {
                       widget.addName(widget.inputName.text);
