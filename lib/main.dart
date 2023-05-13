@@ -5,7 +5,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => MyApp(),
-      '/check_people': (context) => Text("check_people"),
+      '/check_people': (context) => CheckPeoplePage(),
       '/choose_menu': (context) => Text("choose_menu"),
       '/history': (context) => Text("history"),
       '/input_price': (context) => Text("input_price"),
@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
               return ListTile(
                 title: TextButton(
                   child: Text(classList[i].toString()),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/check_people');
+                  },
                 ),
               );
             })
@@ -44,11 +46,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ChooseClass extends StatelessWidget {
-  const ChooseClass({super.key});
+class CheckPeoplePage extends StatelessWidget {
+  const CheckPeoplePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+            title: Text("neo nano jung san"),
+            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))]),
+        body: Text('hi'));
   }
 }
