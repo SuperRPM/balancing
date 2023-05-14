@@ -495,9 +495,18 @@ class _SelectMenuState extends State<SelectMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text("neo nano jung san"),
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))]),
+        appBar: AppBar(title: Text("neo nano jung san"), actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return DialogInputPrice(nameList: widget.nameList);
+                    });
+              },
+              icon: Icon(Icons.money)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.menu))
+        ]),
         body: Container(
             width: MediaQuery.of(context).size.width,
             child: SingleChildScrollView(
@@ -625,5 +634,72 @@ class _SelectMenuState extends State<SelectMenu> {
                 ],
               ),
             )));
+  }
+}
+
+class DialogInputPrice extends StatefulWidget {
+  var nameList;
+  DialogInputPrice({super.key, required this.nameList});
+  var totalPrice = TextEditingController();
+  var andrewPrice = TextEditingController();
+  var sojuPrice = TextEditingController();
+  var beerPrice = TextEditingController();
+  var sodaPrice = TextEditingController();
+
+  @override
+  State<DialogInputPrice> createState() => _DialogInputPriceState();
+}
+
+class _DialogInputPriceState extends State<DialogInputPrice> {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        width: 300,
+        height: 600,
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(hintText: "총금액"),
+              controller: widget.sodaPrice,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "안주"),
+              controller: widget.totalPrice,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "소주"),
+              controller: widget.andrewPrice,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "맥주"),
+              controller: widget.sojuPrice,
+            ),
+            TextField(
+              decoration: InputDecoration(hintText: "음료수"),
+              controller: widget.beerPrice,
+            ),
+            Row(children: [
+              TextButton(
+                  child: Text('등록'),
+                  onPressed: () {
+                    // if (widget.inputName.text.isEmpty) {
+                    //   showDialog(context: context, builder: (builder))
+                    // }
+                    // setState(() {
+                    // widget.addName(widget.inputName.text);
+                    // });
+                    Navigator.pop(context);
+                  }),
+              TextButton(
+                  child: Text('취소'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ])
+          ],
+        ),
+      ),
+    );
   }
 }
