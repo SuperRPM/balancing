@@ -525,31 +525,99 @@ class _SelectMenuState extends State<SelectMenu> {
                       )
                     ],
                   ),
-                  ...widget.nameList.map((person) {
+                  ...widget.nameList.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    var person = entry.value;
+
                     return TableRow(
                       children: [
                         TableCell(
                           child: Text(person['name'].toString()),
                         ),
                         TableCell(
-                            child: ElevatedButton(
-                                onPressed: () {},
-                                child: Text(''),
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.white)))),
-                        TableCell(
-                          child:
-                              ElevatedButton(onPressed: () {}, child: Text('')),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (person['andrew'] is bool) {
+                                  person['andrew'] =
+                                      !(person['andrew'] as bool);
+                                }
+                              });
+                            },
+                            child: Text('A'),
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                    (states) {
+                              if (person['andrew'] == true) {
+                                return Colors.blue;
+                              } else {
+                                return Colors.white;
+                              }
+                            })),
+                          ),
                         ),
                         TableCell(
-                          child:
-                              ElevatedButton(onPressed: () {}, child: Text('')),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (person['soju'] is bool) {
+                                  person['soju'] = !(person['soju'] as bool);
+                                }
+                              });
+                            },
+                            child: Text('S'),
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                    (states) {
+                              if (person['soju'] == true) {
+                                return Colors.blue;
+                              } else {
+                                return Colors.white;
+                              }
+                            })),
+                          ),
                         ),
                         TableCell(
-                          child:
-                              ElevatedButton(onPressed: () {}, child: Text('')),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (person['beer'] is bool) {
+                                  person['beer'] = !(person['beer'] as bool);
+                                }
+                              });
+                            },
+                            child: Text('B'),
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                    (states) {
+                              if (person['beer'] == true) {
+                                return Colors.blue;
+                              } else {
+                                return Colors.white;
+                              }
+                            })),
+                          ),
+                        ),
+                        TableCell(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                if (person['soda'] is bool) {
+                                  person['soda'] = !(person['soda'] as bool);
+                                }
+                              });
+                            },
+                            child: Text('so'),
+                            style: ButtonStyle(backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                                    (states) {
+                              if (person['soda'] == true) {
+                                return Colors.blue;
+                              } else {
+                                return Colors.white;
+                              }
+                            })),
+                          ),
                         ),
                       ],
                     );
