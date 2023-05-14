@@ -15,9 +15,16 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   var classList = ['린더벅', '입문', '초중급', '중급', '탄탄베이직'];
+
   var nameListTemp = [
     '관장님',
     '정시니',
@@ -34,7 +41,14 @@ class MyApp extends StatelessWidget {
     '네모',
     '세모'
   ];
+
   // var routeList = ['/check_people', '/choose_menu','/history',]
+  addName(name) {
+    setState(() {
+      nameListTemp.add(name);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +68,7 @@ class MyApp extends StatelessWidget {
                         builder: (context) => CheckPeoplePage(
                           className: classList[i],
                           nameList: nameListTemp,
+                          addName: addName,
                         ),
                       ),
                     );
@@ -71,24 +86,88 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class CheckPeoplePage extends StatelessWidget {
+class CheckPeoplePage extends StatefulWidget {
   final String className;
   final List<String> nameList;
+  final Function addName;
 
   const CheckPeoplePage(
-      {super.key, required this.className, required this.nameList});
+      {super.key,
+      required this.className,
+      required this.nameList,
+      required this.addName});
 
+  @override
+  State<CheckPeoplePage> createState() => _CheckPeoplePageState();
+}
+
+class _CheckPeoplePageState extends State<CheckPeoplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return DialogAddPerson(addName: widget.addName);
+                });
+          },
+        ),
         appBar: AppBar(
             title: Text("neo nano jung san"),
             actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))]),
         body: ListView.builder(
-          itemCount: nameList.length,
+          itemCount: widget.nameList.length,
           itemBuilder: (c, i) {
-            return ListTile(title: Text(nameList[i]));
+            return ListTile(title: Text(widget.nameList[i]));
           },
         ));
+  }
+}
+
+class DialogAddPerson extends StatefulWidget {
+  final Function addName;
+  DialogAddPerson({super.key, required this.addName});
+  var inputGisu = TextEditingController();
+  var inputName = TextEditingController();
+  @override
+  State<DialogAddPerson> createState() => _DialogAddPersonState();
+}
+
+class _DialogAddPersonState extends State<DialogAddPerson> {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        width: 300,
+        height: 300,
+        child: Column(
+          children: [
+            TextField(
+              controller: widget.inputName,
+            ),
+            Row(children: [
+              TextButton(
+                  child: Text('등록'),
+                  onPressed: () {
+                    // if (widget.inputName.text.isEmpty) {
+                    //   showDialog(context: context, builder: (builder))
+                    // }
+                    setState(() {
+                      widget.addName(widget.inputName.text);
+                    });
+                    Navigator.pop(context);
+                  }),
+              TextButton(
+                  child: Text('취소'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ])
+          ],
+        ),
+      ),
+    );
   }
 }
