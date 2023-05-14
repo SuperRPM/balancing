@@ -125,7 +125,7 @@ class _CheckPeoplePageState extends State<CheckPeoplePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SelectMenu(),
+                    builder: (context) => SelectMenu(nameList: widget.nameList),
                   ),
                 );
               },
@@ -189,7 +189,8 @@ class _DialogAddPersonState extends State<DialogAddPerson> {
 }
 
 class SelectMenu extends StatefulWidget {
-  const SelectMenu({super.key});
+  List nameList;
+  SelectMenu({super.key, required this.nameList});
 
   @override
   State<SelectMenu> createState() => _SelectMenuState();
@@ -198,6 +199,68 @@ class SelectMenu extends StatefulWidget {
 class _SelectMenuState extends State<SelectMenu> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+            title: Text("neo nano jung san"),
+            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))]),
+        body: Container(
+            width: MediaQuery.of(context).size.width,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Table(
+                defaultColumnWidth: FixedColumnWidth(1),
+                border: TableBorder.all(),
+                children: [
+                  TableRow(
+                    children: [
+                      TableCell(
+                        child: Text('이름'),
+                      ),
+                      TableCell(
+                        child: Text('안주'),
+                      ),
+                      TableCell(
+                        child: Text('소주'),
+                      ),
+                      TableCell(
+                        child: Text('맥주'),
+                      ),
+                      TableCell(
+                        child: Text('음료'),
+                      )
+                    ],
+                  ),
+                  ...widget.nameList.map((name) {
+                    return TableRow(
+                      children: [
+                        TableCell(
+                          child: Text(name),
+                        ),
+                        TableCell(
+                            child: ElevatedButton(
+                                onPressed: () {},
+                                child: Text(''),
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white)))),
+                        TableCell(
+                          child:
+                              ElevatedButton(onPressed: () {}, child: Text('')),
+                        ),
+                        TableCell(
+                          child:
+                              ElevatedButton(onPressed: () {}, child: Text('')),
+                        ),
+                        TableCell(
+                          child:
+                              ElevatedButton(onPressed: () {}, child: Text('')),
+                        ),
+                      ],
+                    );
+                  }).toList(),
+                ],
+              ),
+            )));
   }
 }
