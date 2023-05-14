@@ -88,10 +88,10 @@ class _MyAppState extends State<MyApp> {
 
 class CheckPeoplePage extends StatefulWidget {
   final String className;
-  final List<String> nameList;
+  List<String> nameList;
   final Function addName;
 
-  const CheckPeoplePage(
+  CheckPeoplePage(
       {super.key,
       required this.className,
       required this.nameList,
@@ -117,11 +117,27 @@ class _CheckPeoplePageState extends State<CheckPeoplePage> {
         appBar: AppBar(
             title: Text("neo nano jung san"),
             actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))]),
-        body: ListView.builder(
-          itemCount: widget.nameList.length,
-          itemBuilder: (c, i) {
-            return ListTile(title: Text(widget.nameList[i]));
-          },
+        body: Column(
+          children: [
+            TextButton(
+              child: Text('정산시작'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SelectMenu(),
+                  ),
+                );
+              },
+            ),
+            Expanded(
+                child: ListView.builder(
+              itemCount: widget.nameList.length,
+              itemBuilder: (c, i) {
+                return ListTile(title: Text(widget.nameList[i]));
+              },
+            ))
+          ],
         ));
   }
 }
@@ -154,9 +170,9 @@ class _DialogAddPersonState extends State<DialogAddPerson> {
                     // if (widget.inputName.text.isEmpty) {
                     //   showDialog(context: context, builder: (builder))
                     // }
-                    setState(() {
-                      widget.addName(widget.inputName.text);
-                    });
+                    // setState(() {
+                    widget.addName(widget.inputName.text);
+                    // });
                     Navigator.pop(context);
                   }),
               TextButton(
@@ -169,5 +185,19 @@ class _DialogAddPersonState extends State<DialogAddPerson> {
         ),
       ),
     );
+  }
+}
+
+class SelectMenu extends StatefulWidget {
+  const SelectMenu({super.key});
+
+  @override
+  State<SelectMenu> createState() => _SelectMenuState();
+}
+
+class _SelectMenuState extends State<SelectMenu> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
