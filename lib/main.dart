@@ -24,28 +24,322 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var classList = ['린더벅', '입문', '초중급', '중급', '탄탄베이직'];
-
   var nameListTemp = [
-    '관장님',
-    '정시니',
-    '154꽁순',
-    '딩구',
-    '하이',
-    '바이',
-    '체리',
-    '엄마는외계인',
-    '아빠도외계인',
-    '나는지구인',
-    '난입양됐나?',
-    '빵카',
-    '네모',
-    '세모'
+    {
+      'name': '꽁순',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '자유시간',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '너자',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '베이브',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '스카',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '딩구',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '매력킴',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '코지',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '관장님',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '구리',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '네모',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '물범',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '오라클',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '용용',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '카스',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '호시',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '다투라',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '상윤',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {'name': '휴', 'andrew': false, 'soju': false, 'beer': false, 'soda': false},
+    {
+      'name': '쎄쎄',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '켈리',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '쀼이',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '오숭',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '델라',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '루케',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '트리플A',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '싸비',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '제이콥',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '만듀',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '만수',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '샤샤',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '시니',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '웅이',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '지니',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '체리',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '카빵',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '쿠키',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '하이',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '유니',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '펭지',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '뉴니',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
+    {
+      'name': '해주',
+      'andrew': false,
+      'soju': false,
+      'beer': false,
+      'soda': false
+    },
   ];
 
+  // List<Map<String, dynamic>> nameToObj(List<String> nameList) {
+  //   var tempList = <Map<String, dynamic>>[];
+  //   for (var name in nameList) {
+  //     tempList.add({
+  //       'name': name,
+  //       'andrew': false,
+  //       'soju': false,
+  //       'beer': false,
+  //       'soda': false,
+  //     });
+  //   }
+  //   return tempList;
+  // }
+
+  // List<Map<String, dynamic>> objList = [];
   // var routeList = ['/check_people', '/choose_menu','/history',]
   addName(name) {
     setState(() {
-      nameListTemp.add(name);
+      nameListTemp.add({
+        'name': name,
+        'andrew': false,
+        'soju': false,
+        'beer': false,
+        'soda': false
+      });
     });
   }
 
@@ -88,7 +382,7 @@ class _MyAppState extends State<MyApp> {
 
 class CheckPeoplePage extends StatefulWidget {
   final String className;
-  List<String> nameList;
+  List<Map<String, Object>> nameList;
   final Function addName;
 
   CheckPeoplePage(
@@ -134,7 +428,8 @@ class _CheckPeoplePageState extends State<CheckPeoplePage> {
                 child: ListView.builder(
               itemCount: widget.nameList.length,
               itemBuilder: (c, i) {
-                return ListTile(title: Text(widget.nameList[i]));
+                return ListTile(
+                    title: Text(widget.nameList[i]['name'].toString()));
               },
             ))
           ],
@@ -189,7 +484,7 @@ class _DialogAddPersonState extends State<DialogAddPerson> {
 }
 
 class SelectMenu extends StatefulWidget {
-  List nameList;
+  List<Map<String, Object>> nameList;
   SelectMenu({super.key, required this.nameList});
 
   @override
@@ -230,11 +525,11 @@ class _SelectMenuState extends State<SelectMenu> {
                       )
                     ],
                   ),
-                  ...widget.nameList.map((name) {
+                  ...widget.nameList.map((person) {
                     return TableRow(
                       children: [
                         TableCell(
-                          child: Text(name),
+                          child: Text(person['name'].toString()),
                         ),
                         TableCell(
                             child: ElevatedButton(
